@@ -21,13 +21,15 @@ public class UserController {
         return  userRepository.getUserById(userId);
     }
 
+    @PutMapping("/api/user/{id}")
+    public String updateUser(@PathVariable("id") String userId, @RequestBody User user) {
+        return userRepository.update(userId, user);
+    }
+
     @DeleteMapping("/api/user/{id}")
     public String deleteUser(@PathVariable("id") String userId) {
         return userRepository.delete(userId);
     }
 
-    @PutMapping("/api/user/{id}")
-    public String updateUser(@PathVariable("id") String userId, @RequestBody User user) {
-        return userRepository.update(userId, user);
-    }
+
 }
