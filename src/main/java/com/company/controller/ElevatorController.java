@@ -1,9 +1,7 @@
 package com.company.controller;
 
 import com.company.model.Elevator;
-import com.company.model.User;
 import com.company.repository.ElevatorRepository;
-import com.company.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

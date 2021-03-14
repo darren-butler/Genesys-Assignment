@@ -40,5 +40,4 @@ public class BuildingRepository {
         dynamoDBMapper.delete(building);
         return "Building Deleted";
     }
-
 }

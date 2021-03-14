@@ -1,9 +1,16 @@
 package com.company.controller;
 
+import com.company.model.Building;
+import com.company.model.Elevator;
+import com.company.model.ElevatorState;
 import com.company.model.User;
 import com.company.repository.UserRepository;
+import com.company.service.BuildingService;
+import com.company.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.info.ProjectInfoProperties;
 import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
 @RestController
 public class UserController {
@@ -11,19 +18,57 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private BuildingService buildingService;
+
+    // Add User
     @PostMapping("/api/user")
     public User saveUser(@RequestBody User user) {
-        return userRepository.save(user);
+        return userService.addUser(user);
     }
+
+    // Update User
+    @PutMapping("/api/user/{id}")
+    public String updateUser(@PathVariable("id") String userId, @RequestBody User user) {
+        return userService.updateUser(userId, user);
+    }
+
+    // Find a building for a user
+    @GetMapping("/api/user/building/{buildingId}")
+    public Building getBuilding(@PathVariable("buildingId") String buildingId) {
+        return buildingService.getUserBuilding(buildingId);
+    }
+
+    // Get states of all elevators for a user
+    @GetMapping("/api/user/elevatorStates/{buildingId}")
+    public List<ElevatorState> getElevatorStates(@PathVariable("buildingId") String buildingId) {
+        return buildingService.getAllElevatorStates(buildingId);
+    }
+
+    // Summon an Elevator
+    @GetMapping("/api/user/elevator/{elevatorId}")
+    public Elevator summonElevator(@PathVariable("elevatorId") String elevatorId) {
+        return buildingService.summonElevator(elevatorId);
+    }
+
+    // User selects floor
+    @PutMapping("/api/user/elevator/{elevatorId}")
+    public Elevator setFloor(@PathVariable("elevatorId") String elevatorId, @RequestParam(value="floor") int floor) {
+        return buildingService.setFloor(elevatorId, floor);
+    }
+
+
+
+
+
+
 
     @GetMapping("/api/user/{id}")
     public User getUser(@PathVariable("id") String userId) {
         return  userRepository.getUserById(userId);
-    }
-
-    @PutMapping("/api/user/{id}")
-    public String updateUser(@PathVariable("id") String userId, @RequestBody User user) {
-        return userRepository.update(userId, user);
     }
 
     @DeleteMapping("/api/user/{id}")
@@ -31,5 +76,22 @@ public class UserController {
         return userRepository.delete(userId);
     }
 
+    @GetMapping("/api/user/{id}/buildings")
+    public List<Building> getUserBuildings(@PathVariable("id") String userId) {
+        return buildingService.getAllUserBuildings(userId);
+    }
+
+    @GetMapping("/api/user/{id}/building/{buildingId}")
+    public List<ElevatorState> elevatorStates(@PathVariable("id") String userID, @PathVariable("buildingId") String buildingId) {
+//       List<String> elevators = buildingRepository.getBuildingById(buildingId).getElevatorIds();
+//       List<ElevatorState> states = new ArrayList<>();
+//
+//        for (String elevatorId: elevators) {
+//            states.add(elevatorRepository.getElevatorById(elevatorId).getElevatorState());
+//        }
+//
+//        return states;
+        return null;
+    }
 
 }
