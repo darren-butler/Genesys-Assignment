@@ -23,8 +23,7 @@ mvn spring-boot:run
 
 **Method** : `POST`
 
-**Content** : In this example, the User can see three Accounts as AccountAdmin
-`AA`, Viewer `VV`, and Owner `OO` - in that order:
+**Example Body** :
 
 ```json
 {
@@ -37,19 +36,19 @@ mvn spring-boot:run
 ```
 ### Update a user <a name="2"></a>
 
-**URL** : `/api/user/`
+**URL** : `/api/user/{id}`
 
-**Method** : `POST`
+**Method** : `PUT`
 
-**Content** : In this example, the User can see three Accounts as AccountAdmin
-`AA`, Viewer `VV`, and Owner `OO` - in that order:
+**Example Body** :
 
 ```json
 {
-    "userName": "John",
+    "userId": "af48a487-82a1-4868-8f82-e4df529d31a2",
+    "userName": "Darren",
     "buildingIds": [
-        "1234",
-        "5678"
+        "577f1505-bc19-4d04-8a92-55d9986e1a22",
+        "9533971b-6e7c-424c-9a00-b75670c11796"
     ]
 }
 ```
