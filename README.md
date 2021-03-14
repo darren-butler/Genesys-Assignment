@@ -54,73 +54,27 @@ mvn spring-boot:run
 ```
 ### Find a building <a name="3"></a>
 
-**URL** : `/api/user/`
+**URL** : `/api/user/building/{buildingId}`
 
-**Method** : `POST`
+**Method** : `GET`
 
-**Content** : In this example, the User can see three Accounts as AccountAdmin
-`AA`, Viewer `VV`, and Owner `OO` - in that order:
-
-```json
-{
-    "userName": "John",
-    "buildingIds": [
-        "1234",
-        "5678"
-    ]
-}
-```
 ### Get status of all elevators in a building <a name="4"></a>
 
-**URL** : `/api/user/`
+**URL** : `/api/user/elevatorStates/{buildingId}`
 
-**Method** : `POST`
+**Method** : `GET`
 
-**Content** : In this example, the User can see three Accounts as AccountAdmin
-`AA`, Viewer `VV`, and Owner `OO` - in that order:
-
-```json
-{
-    "userName": "John",
-    "buildingIds": [
-        "1234",
-        "5678"
-    ]
-}
-```
 ### User summons an elevator <a name="5"></a>
 
-**URL** : `/api/user/`
+**URL** : `/api/user/elevator/{elevatorId}`
 
-**Method** : `POST`
+**Method** : `GET`
 
-**Content** : In this example, the User can see three Accounts as AccountAdmin
-`AA`, Viewer `VV`, and Owner `OO` - in that order:
-
-```json
-{
-    "userName": "John",
-    "buildingIds": [
-        "1234",
-        "5678"
-    ]
-}
-```
 ### User selects a floor <a name="6"></a>
 
-**URL** : `/api/user/`
+**URL** : `/api/user/elevator/{elevatorId}?floor={floorNumber}`
 
-**Method** : `POST`
+**Method** : `PUT`
 
-**Content** : In this example, the User can see three Accounts as AccountAdmin
-`AA`, Viewer `VV`, and Owner `OO` - in that order:
-
-```json
-{
-    "userName": "John",
-    "buildingIds": [
-        "1234",
-        "5678"
-    ]
-}
-```
+**Example** : 
+`http://localhost:8081/api/user/elevator/40b5cb56-ceaf-4601-995a-c651b557ecde?floor=2`
