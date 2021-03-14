@@ -28,7 +28,7 @@ public class DynamoDBConfiguration {
                 )
                 .withCredentials(
                         new AWSStaticCredentialsProvider(
-                                new BasicAWSCredentials(
+                                new BasicAWSCredentials( // BAD PRACTICE FOR PRODUCTION CODE!
                                         "AKIA2XEXXC6JINBOBQXX",
                                         "L60hA6J0MoI3wN5+eBEJ59kdtNo7KO3DjPI4TUJb"
                                 )

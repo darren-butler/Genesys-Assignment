@@ -5,11 +5,14 @@ import com.company.repository.BuildingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+@Deprecated
 @RestController
 public class BuildingController {
 
     @Autowired
     private BuildingRepository buildingRepository;
+
+//    THESE ENDPOINTS WERE JUST SETUP INITIALLY TO POPULATE THE DB
 
     @PostMapping("/api/building")
     public Building saveBuilding(@RequestBody Building building) {

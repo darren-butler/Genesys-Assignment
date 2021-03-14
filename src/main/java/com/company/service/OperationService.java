@@ -9,12 +9,11 @@ import com.company.repository.ElevatorRepository;
 import com.company.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class BuildingService {
+public class OperationService {
 
     @Autowired
     private BuildingRepository buildingRepository;
@@ -59,6 +58,7 @@ public class BuildingService {
     }
 
     public Elevator setFloor(String elevatorId, int floor) {
+        // Tell the elevator to start moving towards the users floor?
         Elevator elevator = elevatorRepository.getElevatorById(elevatorId);
         elevator.setCurrentFloor(floor);
 

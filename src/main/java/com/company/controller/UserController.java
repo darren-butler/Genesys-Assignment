@@ -5,10 +5,9 @@ import com.company.model.Elevator;
 import com.company.model.ElevatorState;
 import com.company.model.User;
 import com.company.repository.UserRepository;
-import com.company.service.BuildingService;
+import com.company.service.OperationService;
 import com.company.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.info.ProjectInfoProperties;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -22,7 +21,7 @@ public class UserController {
     private UserService userService;
 
     @Autowired
-    private BuildingService buildingService;
+    private OperationService buildingService;
 
     // Add User
     @PostMapping("/api/user")
@@ -61,37 +60,21 @@ public class UserController {
     }
 
 
+//    THESE ENDPOINTS WERE JUST SETUP INITIALLY TO POPULATE THE DB
 
-
-
-
-
-    @GetMapping("/api/user/{id}")
-    public User getUser(@PathVariable("id") String userId) {
-        return  userRepository.getUserById(userId);
-    }
-
-    @DeleteMapping("/api/user/{id}")
-    public String deleteUser(@PathVariable("id") String userId) {
-        return userRepository.delete(userId);
-    }
-
-    @GetMapping("/api/user/{id}/buildings")
-    public List<Building> getUserBuildings(@PathVariable("id") String userId) {
-        return buildingService.getAllUserBuildings(userId);
-    }
-
-    @GetMapping("/api/user/{id}/building/{buildingId}")
-    public List<ElevatorState> elevatorStates(@PathVariable("id") String userID, @PathVariable("buildingId") String buildingId) {
-//       List<String> elevators = buildingRepository.getBuildingById(buildingId).getElevatorIds();
-//       List<ElevatorState> states = new ArrayList<>();
+//    @GetMapping("/api/user/{id}")
+//    public User getUser(@PathVariable("id") String userId) {
+//        return  userRepository.getUserById(userId);
+//    }
 //
-//        for (String elevatorId: elevators) {
-//            states.add(elevatorRepository.getElevatorById(elevatorId).getElevatorState());
-//        }
+//    @DeleteMapping("/api/user/{id}")
+//    public String deleteUser(@PathVariable("id") String userId) {
+//        return userRepository.delete(userId);
+//    }
 //
-//        return states;
-        return null;
-    }
+//    @GetMapping("/api/user/{id}/buildings")
+//    public List<Building> getUserBuildings(@PathVariable("id") String userId) {
+//        return buildingService.getAllUserBuildings(userId);
+//    }
 
 }
